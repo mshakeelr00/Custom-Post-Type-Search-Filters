@@ -1,0 +1,844 @@
+/**
+
+* Search filters
+
+**/
+
+
+function camp_search_filter()
+{
+
+?>
+
+	<div class="mainsec">
+
+
+
+    <form id="custom-search-filter" action="<?php //echo esc_url(home_url('/camp-results/')); ?>" method="POST" enctype="multipart/form-data">
+   	
+    	<div class="search_camp">
+
+
+    	<div class="block">
+    	
+    		<!-----For gender----->
+
+    		<label for="gender">Camp Type:</label>
+
+		    <select name="camp_type" id="camp_type">
+
+		        <option value="">All</option>
+
+		        <?php
+
+			        $camp_terms = get_terms( array(
+
+			            'taxonomy' => 'category',
+
+			            'hide_empty' => false,
+
+			        ) );
+
+
+
+			        foreach ( $camp_terms as $term ) {
+
+			            echo '<option value="' . esc_attr( $term->slug ) . '">' . esc_html( $term->name ) . '</option>';
+
+			        }
+
+		        ?>
+
+		    </select>
+
+		</div>	
+
+
+
+		<!-----Division----->
+
+		<div class="block">
+
+    		<!-----layoput categories----->
+
+		    <label for="region">Division:</label>
+
+		    <select name="division" id="division">
+
+		        <option value="">All</option>
+
+		        <?php
+
+			        $division_terms = get_terms( array(
+
+			            'taxonomy' => 'layout_category',
+
+			            'hide_empty' => false,
+
+			        ) );
+
+
+
+			        foreach ( $division_terms as $term ) {
+
+			            echo '<option value="' . esc_attr( $term->slug ) . '">' . esc_html( $term->name ) . '</option>';
+
+			        }
+
+		        ?>
+
+		    </select>
+			
+		</div>
+
+
+		<!-----For gender----->
+
+    	<div class="block">
+
+    		<label for="gender">Gender:</label>
+
+		    <select name="gender" id="gender">
+
+		        <option value="">All</option>
+
+		        <?php
+
+			        $gender_terms = get_terms( array(
+
+			            'taxonomy' => 'boys_and_girls',
+
+			            'hide_empty' => false,
+
+			        ) );
+
+
+
+			        foreach ( $gender_terms as $term ) {
+
+			            echo '<option value="' . esc_attr( $term->slug ) . '">' . esc_html( $term->name ) . '</option>';
+
+			        }
+
+		        ?>
+
+		    </select>
+
+		</div>
+
+
+		<!-----For Region----->
+
+    	<div class="block">
+
+    		<label for="gender">Region:</label>
+
+		    <select name="region" id="region">
+
+		        <option value="">All</option>
+
+		        <?php
+
+			        $camp_terms = get_terms( array(
+
+			            'taxonomy' => 'region',
+
+			            'hide_empty' => false,
+
+			        ) );
+
+
+
+			        foreach ( $camp_terms as $term ) {
+
+			            echo '<option value="' . esc_attr( $term->slug ) . '">' . esc_html( $term->name ) . '</option>';
+
+			        }
+			    ?>    
+
+		        <!-- <option value="west_coast">West Coast</option>
+
+				<option value="midwest">Midwest</option>
+
+				<option value="northeast">Northeast</option>
+
+				<option value="northwest">Northwest</option>
+
+				<option value="south_central">South Central</option>
+
+				<option value="southeast">Southeast</option> -->
+
+		    </select>
+
+		
+		</div>
+
+
+
+		<!-----Month----->
+
+		<div class="block">    
+
+    	
+
+    		<label for="state">Month:</label>
+
+    		<select name="month" id="month">
+
+		        <option value="">All</option>
+
+		        <?php
+
+			        $camp_terms = get_terms( array(
+
+			            'taxonomy' => 'month',
+			            'orderby'    => 'term_id',	
+			            'hide_empty' => false,
+
+			        ) );
+
+
+
+			        foreach ( $camp_terms as $term ) {
+
+			            echo '<option value="' . esc_attr( $term->slug ) . '">' . esc_html( $term->name ) . '</option>';
+
+			        }
+			    ?>  
+
+		        <!-- <option value="january">January</option>
+
+				<option value="february">February</option>
+
+				<option value="march">March</option>
+
+				<option value="april">April</option>
+
+				<option value="may">May</option>
+
+				<option value="june">June</option>
+
+				<option value="july">July</option>
+
+				<option value="august">August</option>
+
+				<option value="september">September</option>
+
+				<option value="october">October</option>
+
+				<option value="november">November</option>
+
+				<option value="december">December</option> -->
+
+		    </select>
+
+    	</div>
+
+
+    	<!-----School/program----->
+
+		<div class="block">    
+
+
+    		<label for="state">School / Program:</label>
+
+    		<select name="school" id="school">
+
+		        <option value="">All</option>
+
+		        <?php
+
+			        $school_terms = get_terms( array(
+
+			            'taxonomy' => 'category',
+
+			            'hide_empty' => false,
+
+			        ) );
+
+
+
+			        foreach ( $school_terms as $term ) {
+
+			            echo '<option value="' . esc_attr( $term->slug ) . '">' . esc_html( $term->name ) . '</option>';
+
+			        }
+
+		        ?>
+
+		    </select>
+
+    	
+
+    	</div>
+
+		
+
+		<div class="block">    
+
+    		<!-----For Project Categories State----->
+
+    		<label for="region">State:</label>
+
+		    <select name="state" id="state">
+
+		        <option value="">All</option>
+
+		        <?php
+
+			        $state_terms = get_terms( array(
+
+			            'taxonomy' => 'project_category',
+
+			            'hide_empty' => false,
+
+			        ) );
+
+
+
+			        foreach ( $state_terms as $term ) {
+
+			            echo '<option value="' . esc_attr( $term->slug ) . '">' . esc_html( $term->name ) . '</option>';
+
+			        }
+
+		        ?>
+
+		    </select>
+
+		
+
+		</div>
+
+  
+
+    	<div class="block">
+
+    		<input type="submit" name="submit" value="Search" class="submit">
+
+    	</div>
+
+    	</div>
+
+    	<input type="hidden" name="post_type" value="camp">
+
+	</form>
+
+
+
+	</div>
+
+<?php
+
+}
+
+add_shortcode('camp_search_filter','camp_search_filter');
+
+
+/**
+* custom ajax
+**/
+
+function enqueue_custom_scripts() {
+    //wp_enqueue_script('jquery');
+    wp_enqueue_script('custom-script', get_template_directory_uri() . '/js/custom-script.js', array('jquery'), null, true);
+    wp_localize_script('custom-script', 'ajaxurl', admin_url('admin-ajax.php'));
+}
+add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
+
+
+/**
+
+* Getting Search ajax
+
+**/
+
+
+add_action('wp_ajax_custom_ajax_action', 'custom_ajax_function_test');
+add_action('wp_ajax_nopriv_custom_ajax_action', 'custom_ajax_function_test');
+
+function custom_ajax_function_test() 
+{
+
+	if (isset($_POST['formData'])) {
+
+        // Retrieve the posted data
+        $formData = $_POST['formData'];
+
+  		// echo "<pre>";
+		// print_r($formData);
+		// echo "</pre>";
+
+        // Decode the JSON string to an associative array
+      //$formDataArray = json_decode($formData, true);
+
+
+		$campType = $formData[0]['value'];
+	 	$division = $formData[1]['value'];
+        $gender = $formData[2]['value'];
+        $region = $formData[3]['value'];
+        $month = $formData[4]['value'];
+        $school = $formData[5]['value'];
+        $state = $formData[6]['value'];
+
+
+       
+
+		$args = array(
+		    'post_type' => 'camp',
+		    'post_status' => 'publish',
+			
+
+		    // Add taxonomy queries based on the posted values
+		    'tax_query' => array(
+		        'relation' => 'OR',
+		        array(
+		            'taxonomy' => 'category',
+		            'field'    => 'slug',
+		            'terms'    => $campType,
+		        ),
+
+	         	array(
+                    'taxonomy' => 'layout_category',
+                    'field'    => 'slug',
+                    'terms'    => $division,
+                ),
+
+	         	array(
+                    'taxonomy' => 'boys_and_girls',
+                    'field'    => 'slug',
+                    'terms'    => $gender,
+                ),
+
+                array(
+                    'taxonomy' => 'region',
+                    'field'    => 'slug',
+                    'terms'    => $region,
+                ),
+
+                array(
+                    'taxonomy' => 'month',
+                    'field'    => 'slug',
+                    'terms'    => $month,
+                ),
+
+                array(
+                    'taxonomy' => 'program_school',
+                    'field'    => 'slug',
+                    'terms'    => $school,
+                ),   
+
+                 array(
+                    'taxonomy' => 'project_category',
+                    'field'    => 'slug',
+                    'terms'    => $state,
+                ),   
+
+		    ),
+
+
+
+		);
+
+		// Run your WordPress query with these arguments
+		$ajaxquery = new WP_Query($args);
+
+		// Process query results as needed
+		if ($ajaxquery->have_posts()) {
+		    while ($ajaxquery->have_posts()) {
+		        $ajaxquery->the_post();
+		        // Output post data as needed
+		        //echo '<div class="hello">title --->'.get_the_title().'</div>';
+
+		        $post_id = get_the_ID();
+
+
+		        //get camp types
+		        $camps_type = get_the_terms( $post_id, 'category' );
+				$camp_links = array(); // Initialize an empty array to store links
+
+				if ( $camps_type && ! is_wp_error( $camps_type ) ) {
+				    foreach ( $camps_type as $campterm ) {
+				        $camp_links[] = '<a href="' . esc_url( get_term_link( $campterm ) ) . '">' . esc_html( $campterm->name ) . '</a>';
+				    }
+				}
+
+				// Join the links with commas, but don't add a comma after the last one
+				$campcat = implode(', ', $camp_links);
+		      
+
+
+
+
+				//layot tags
+				$lay_type = get_the_terms( $post_id, 'layout_tag' );
+				$lay_links = array(); // Initialize an empty array to store links
+
+				if ( $lay_type && ! is_wp_error( $lay_type ) ) {
+				    foreach ( $lay_type as $layterm ) {
+				        $lay_links[] = '<a href="' . esc_url( get_term_link( $layterm ) ) . '">' . esc_html( $layterm->name ) . '</a>';
+				    }
+				}
+
+				// Join the links with commas, but don't add a comma after the last one
+				$laycat = implode(', ', $lay_links);
+
+
+
+
+
+
+
+
+
+		        $city_state = get_field('city__state');
+
+		        $camp_date = get_field('camp_date');
+
+		        $camp_loc =  '';      //get_field('camp_date');
+
+		        $camp_player = ''; //get_field('camp_date');
+
+		        $camp_tour = get_field('camp_name');
+
+		        $golf_course = get_field('course_name');
+
+		        $college_coach = get_field('number_of_coaches'); 
+
+		        $school_logos = get_field('school_logos');
+
+		        if(!empty($school_logos['url']))
+		        {
+		        	$school_logo = $school_logos['url'];
+		        }
+			    else
+			    {
+			    	$school_logo = home_url('/wp-content/uploads/2024/03/Tarheel_Junior_Golf_Tour.png');	
+			    }
+
+				echo '<div class="camp_card">';
+
+				if(!empty($campcat))
+		        {	
+		        	echo '<div class="camptypes">'.$campcat.'</div>';
+		    	}
+					    
+				echo	'<div class="title_block">
+					    
+					        <div class="camp_title">
+					            <a href="'.get_permalink().'">'.get_the_title().'</a> 
+					            <span>'.$city_state.'</span> 
+					        </div>
+					    
+					        <div class="camp_img">
+					            <img decoding="async" src="'.$school_logo.'" alt="">
+					        </div>
+					    
+					    </div>
+					    
+					    <div class="camp_date">'.$camp_date.'</div>
+					    
+					    <div class="camp_play_main">';
+
+					// Your PHP logic for generating camp details
+					if(!empty($camp_loc)) {
+					    echo '<div class="camp_play"> <span>Location: </span>'.$camp_loc.'</div>';
+					}
+
+					if(!empty($camp_tour)) {
+					    echo '<div class="camp_play"> <span>Campus Tour: </span>'.$camp_tour.'</span></div>';
+					}
+
+					if(!empty($golf_course)) {
+					    echo '<div class="camp_play"> <span>Golf Course: </span>'.$golf_course.'</span></div>';
+					}
+
+					if(!empty($college_coach)) {
+					    echo '<div class="camp_play"> <span>College Coaches: </span>'.$college_coach.'</span></div>';
+					}
+
+					if(!empty($camp_player)) {
+					    echo '<div class="camp_play"> <span>Players: </span>'.$camp_player.'</div>';
+					}
+
+					if(!empty($laycat))
+					{
+
+						echo '<div class="camp_play"> <span>Tags: </span>'.$laycat.'</div>';
+
+					}
+
+					echo '</div></div>';
+
+
+		    }
+		} else {
+		    echo "No Camps found. Please try again!!!";
+		}
+
+		// Restore global post data
+		wp_reset_postdata();
+
+		   
+
+	}
+	
+	// return $output;
+	 // Always include this to terminate AJAX call properly
+    wp_die();
+}
+
+
+
+/**
+
+* Grab All camps listings to display on search page
+
+**/
+
+
+function grab_camp_listings()
+{
+
+	//post type arguments
+
+	$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+	$args = array(
+
+    	'post_type' => 'camp', 
+
+    	'post_status' => 'publish',
+
+    	'posts_per_page' => 12, 
+
+    	'paged' => $paged,
+
+	);
+
+
+
+	$query = new WP_Query($args);
+
+
+
+	if ($query->have_posts()) {
+
+
+
+		$output = '<div class="camp_card_main"> <div class="ajax-loader">Loading...</div>';
+
+
+
+	    while ($query->have_posts()) {
+
+	        $query->the_post();
+
+	        $post_id = get_the_ID();
+
+
+	        //get camp types
+	        $camps_type = get_the_terms( $post_id, 'category' );
+			$camp_links = array(); // Initialize an empty array to store links
+
+			if ( $camps_type && ! is_wp_error( $camps_type ) ) {
+			    foreach ( $camps_type as $campterm ) {
+			        $camp_links[] = '<a href="' . esc_url( get_term_link( $campterm ) ) . '">' . esc_html( $campterm->name ) . '</a>';
+			    }
+			}
+
+			// Join the links with commas, but don't add a comma after the last one
+			$campcat = implode(', ', $camp_links);
+	      
+
+
+
+
+			//layot tags
+			$lay_type = get_the_terms( $post_id, 'layout_tag' );
+			$lay_links = array(); // Initialize an empty array to store links
+
+			if ( $lay_type && ! is_wp_error( $lay_type ) ) {
+			    foreach ( $lay_type as $layterm ) {
+			        $lay_links[] = '<a href="' . esc_url( get_term_link( $layterm ) ) . '">' . esc_html( $layterm->name ) . '</a>';
+			    }
+			}
+
+			// Join the links with commas, but don't add a comma after the last one
+			$laycat = implode(', ', $lay_links);
+
+
+
+
+
+
+
+	        $city_state = get_field('city__state');
+
+	        $camp_date = get_field('camp_date');
+
+	        $camp_loc =  '';      //get_field('camp_date');
+
+	        $camp_player = ''; //get_field('camp_date');
+
+	        $camp_tour = get_field('camp_name');
+
+	        $golf_course = get_field('course_name');
+
+	        $college_coach = get_field('number_of_coaches'); 
+
+	        $school_logos = get_field('school_logos');
+
+	        if(!empty($school_logos['url']))
+	        {
+	        	$school_logo = $school_logos['url'];
+	        }
+		    else
+		    {
+		    	$school_logo = home_url('/wp-content/uploads/2024/03/Tarheel_Junior_Golf_Tour.png');	
+		    }
+	       
+
+	        //displaying posts cards
+
+	        $output .= '<div class="camp_card">';
+
+	        if(!empty($campcat))
+	        {	
+	        	$output .= '<div class="camptypes">'.$campcat.'</div>';
+	    	}
+
+	        $output .= '<div class="title_block">';
+
+	        $output .= '<div class="camp_title"><a href="'.get_permalink().'">'.get_the_title().'</a> <span>'.$city_state.'</span> </div>';
+
+	        $output .= '<div class="camp_img"><img src="'.$school_logo.'" alt=""></div>';
+
+	        $output .= '</div>'; 
+
+
+
+			$output .= '<div class="camp_date">'.$camp_date.'</div>';
+
+
+
+			$output .= '<div class="camp_play_main">';
+
+			
+
+			if(!empty($camp_loc))
+
+			{	
+
+				$output .= '<div class="camp_play"> <span>Location: </span>'.$camp_loc.'</div>';
+
+			}
+
+
+
+			if(!empty($camp_tour))
+
+			{
+
+				$output .= '<div class="camp_play"> <span>Campus Tour: </span>'.$camp_tour.'</span></div>';
+
+			}
+
+
+
+			if(!empty($golf_course))
+
+			{
+
+				$output .= '<div class="camp_play"> <span>Golf Course: </span>'.$golf_course.'</span></div>';
+
+			}
+
+
+
+			if(!empty($college_coach))
+
+			{
+
+				$output .= '<div class="camp_play"> <span>College Coaches: </span>'.$college_coach.'</span></div>';
+
+			}
+
+
+
+			if(!empty($camp_player))
+
+			{
+
+				$output .= '<div class="camp_play"> <span>Players: </span>'.$camp_player.'</div>';
+
+			}
+
+
+			if(!empty($laycat))
+
+			{
+
+				$output .= '<div class="camp_play"> <span>Tags: </span>'.$laycat.'</div>';
+
+			}
+
+			 
+
+
+
+			$output .= '</div>';
+
+
+
+	        $output .= '</div>'; 
+
+
+
+	    }
+
+
+
+	    $output .= '</div>';
+
+
+
+	    // Pagination
+
+	    $output.= '<div class="paginatelinks">';
+
+	    
+
+	    $output .= paginate_links( array(
+
+	        'total'   => $query->max_num_pages,
+
+	        'current' => max( 1, get_query_var( 'paged' ) ),
+
+	    ) );
+
+	    
+
+	    $output .= '</div>';
+
+
+
+	    wp_reset_postdata(); // Reset post data
+
+	
+
+	} else {
+
+	    
+
+	     $output .= "No Posts Found!!";
+
+	}
+
+
+
+	return $output;
+
+}
+
+add_shortcode('grab_camp_listings','grab_camp_listings');
